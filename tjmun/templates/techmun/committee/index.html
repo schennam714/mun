@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block background %}
+	{% static 'img/gavel.jpg' %}
+{% endblock %}
+
+{% block title %}
+<h1 class="white">Committees</h1>
+{% endblock %}
+
+{% block main %}
+<section id="service" class="section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 col-sm-9 col-xs-12">
+			       <div style="visibility: visible;" class="col-sm-20 more-features-box">
+			          
+
+			       		<!--<div class="more-features-box-text">
+			            <div class="more-features-box-text-description" style="padding-bottom: 300px;">
+			            	<ul class="awards-content2">
+				            <li><h4 style="font-size: 20px">Committees Coming Soon!</h4></li>
+				            	<ul>
+				            	<ul>
+				            </ul>
+				        </div>
+			          </div> -->
+                      <!--<div class="more-features-box-text">
+                        <div class="more-features-box-text-description">
+                            <ul class="awards-content2">
+                            <li><h3>Committees for TechMUN XXVIII Coming Soon!</h3></li>
+                                <ul>
+                                <ul>
+                            </ul>
+                        </div>
+                      </div>-->
+                    
+                      {% for type in commtypes %}
+			          <div class="more-features-box-text">
+			            <div class="more-features-box-text-description">
+			            	<ul class="awards-content2">
+				            <li><h4>{{ type.name }}</h4></li>
+				            	<ul>
+									{% for committee in type.committees.all %}
+				            		<li><a href="{{ committee.url }}">{{ committee.name }} - {{ committee.style }}</a></li>
+									{% endfor %}
+				            	<ul>
+				            </ul>
+				        </div>
+					  </div>
+					  {% endfor %}                       
+                        <!--
+                        <div class="more-features-box-text" style="padding-bottom: 300px;">
+                        <div class="more-features-box-text-description">
+                            <ul class="awards-content2">
+                            <li><h4></h4></li>
+                                <ul>
+                                <ul>
+                            </ul>
+                        </div>
+                      </div>
+                        -->
+
+			        </div>
+			    </div>
+			</div>
+		</div>
+	</section>
+	{% endblock %}

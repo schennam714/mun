@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+<script>
+    $(function() {
+        $("input,textarea,select").on("change paste input", function() {
+            window.onbeforeunload = function() {
+                return 'You have unsaved changes on this page';
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+{% block background %}
+	{% static 'img/gavel.jpg' %}
+{% endblock %}
+
+{% block title %}
+<h1 class="white">Forms</h1>
+<a href="https://www.fcps.edu/sites/default/files/media/forms/se3_0.pdf" target="_blank" style="margin-top: 20px;" class="btn btn-appoint">ECC Form</a>
+<a href="https://www.fcps.edu/sites/default/files/media/forms/se71_7.pdf" target="_blank" style="margin-top: 20px;" class="btn btn-appoint">Health Form</a>
+<!--<a href={% static 'forms/wmhsmunconductcode.pdf' %} target="_blank" style="margin-top: 20px;" class="btn btn-appoint">TJMUN Code of Conduct</a>
+<a href={% static 'forms/wmhsmunparent.pdf' %} target="_blank" style="margin-top: 20px;" class="btn btn-appoint">Parent Authorization</a>-->
+<br>
+<a href="https://docs.google.com/document/d/1po3lBv83K5ssFWp1DOnFZ9zRrXhKmyBj3hJyMR0aMr4/edit?fbclid=IwAR0TCWUJt5wSQD8ThkkbpG02foVxY0Lw3PsAGvTyV_CWrrvBcWS-5etvINc" target="_blank" style="margin-top: 20px;" class="btn btn-appoint">Guide to Form Submission</a>
+{% endblock %}
+
+{% block main %}
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="tbl">
+        {% for field in pdf_form %}
+            <div class="tbl-row">
+                <span class="tbl-cell bold">{{ field.label_tag }}</span>
+                <div class="tbl-cell">{{ field }}</div>
+            </div>
+        {% endfor %}
+    </div>
+    <input type="submit" value="Save">
+</form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block background %}
+	{% static 'img/gavel.jpg' %}
+{% endblock %}
+
+{% block title %}
+<h1 class="white">Warning</h1>
+<h4 class = "white">Proceeding to this form will reset the delegates currently assigned to the next conference</h4>
+<a href="{% url 'users:index' %}" style="margin-top: 20px;" class="btn btn-appoint">Go Back</a>
+<a href="{% url 'users:dels' %}" style="margin-top: 20px;" class="btn btn-appoint">I want to change them all</a>
+{% endblock %}

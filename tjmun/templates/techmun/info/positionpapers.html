@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block background %}
+	{% static 'img/gavel.jpg' %}
+{% endblock %}
+
+{% block title %}
+<h1 class="white">Position Papers</h1>
+{% endblock %}
+
+{% block main %}
+<section class="section-padding">
+        <div class="container">
+            <div class="more-features-box-text-description" style="font-size: 18px; line-height: 25px">
+                <p>As you research for your committee and begin writing your position paper, please examine the below guidelines for your position paper. Hard copies of position papers will be collected at the start of the Friday committee session.</p>
+                <p style="padding-top: 30px">As a reminder, TechMUN does NOT tolerate any plagiarism. If any delegation is caught plagiarising, they or the entire school delegation may be disqualified from award consideration.</p>
+                <p style="padding-top: 30px">As per position papers, we would appreciate the following format.</p>
+                <p style="padding-top: 20px; margin-left: 30px">Cover page including:</p>
+                <ul style="padding-top: 10px; margin-left: 60px; list-style-type: disc;">
+                   <li><p>Country name</p></li> 
+                   <li><p>Committee name</p></li> 
+                   <li><p>Delegate(s) name(s)</p></li> 
+                   <li><p>School name</p></li> 
+                </ul>
+                <p style="padding-top: 10px; margin-left: 30px">One to two pages per topic</p>
+                <p style="padding-top: 10px; margin-left: 30px">MLA works cited page with in-text citations</p>
+                <p style="padding-top: 50px">In general, position papers will cover your country’s (or position’s) background with the issue, past actions regarding the issue, and possible solutions you hope to address in committee. If you have any further questions in terms of the position paper for your specific committee, please email your chairs.</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

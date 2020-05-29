@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block background %}
+	{% static 'img/formcheck.jpg' %}
+{% endblock %}
+
+{% block title %}
+<h1 class="white">Missing Forms</h1>
+{% endblock %}
+
+{% block main %}
+<section class="section-padding">
+    <div class="container">
+        <div class="more-features-box-text-description" style="font-size: 18px; line-height: 30px">
+            {% for member in members %}
+                    <div class="tbl-row">
+                        <div class = "tbl-cell"><p style="color: rgb(0, 89, 192); display: inline;">{{ member.full_name }}</p>
+                        {% for val,field in member.empty_fields %}
+                            {% if val == None or val == "" %}
+                            <h4 style = "display: inline;">{{ field.name }},</h4>
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

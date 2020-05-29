@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+{% endblock %}
+
+{% block background %}
+	{% static 'img/bestlarge.jpg' %}
+{% endblock %}
+
+{% block title %}
+<h1 class="white">Member Login</h1>
+{% endblock %}
+
+{% block main %}
+<section class="section-padding">
+    <div class="container">
+        <div class="more-features-box-text-description" style="font-size: 18px; line-height: 30px">
+            <h1 style="text-align: center">Click <a href="{% url 'social:begin' 'ion' %}{% if request.GET.next %}?next={{ request.GET.next|urlencode }}{% endif %}">here</a> to Log in with Ion</h1>    
+        </div>
+    </div>
+</section>
+{% endblock %}

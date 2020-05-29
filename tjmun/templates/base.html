@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TJMUN</title>
+    <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+    
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
+    <!--<link rel="stylesheet" href="{% static 'font-awesome.min.css' %}">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+ <!-- =======================================================
+        Theme: TJMUN Website
+        Author: Vikram Raghu
+        TJMUN Facebook: https://www.facebook.com/tjhsstmun/
+    ======================================================= -->
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700,400italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{% static 'base.css' %}" />
+<link rel="stylesheet" href="{% static 'nav.css' %}" />
+    
+<!-- js -->
+<script src="{% static 'jquery-1.9.1.min.js' %}"></script>
+<script>
+    $(document).ready(function() {
+        console.log($(window).width())
+        if($(window).width()>768){  
+            $( '.dropdown' ).hover(
+                function(){
+                    $(this).children('.sub-menu').slideDown(190);
+                },
+                function(){
+                    $(this).children('.sub-menu').slideUp(190);
+                }
+            );
+        }
+    }); // end ready
+</script>
+<script>
+    
+</script>
+{% block head %}{% endblock %}
+  </head>
+  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  	<!--banner-->
+    <section id="banner-gavel" class="banner2" style="background: url({% block background %}{% endblock %}) no-repeat fixed;background-size:cover;min-height: 420px;position: relative;" >
+		<div class="bg-color2">
+			<nav class="navbar navbar-default navbar-fixed-top">
+			  <div class="container">
+			  	<div class="col-sm-12">
+				   <div class="navbar-header" style="float:left;">
+				      <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>-->
+				      <a class="navbar-brand" href="{% url 'home:index' %}"><img src="{% static 'img/logo5.png' %}" class="img-responsive" style="height: 65px; width: 160px; margin-top: -24px;"></a>
+				    </div>
+					<div class="collapse navbar-collapse navbar-left" id="myNavbar">
+					<div class="navbar-left">
+                      <ul class="nav navbar-nav content clearfix">
+                            <li><a href="{% url 'home:index' %}#covid19">COVID-19</a></li>
+                            <li><a href="{% url 'home:index' %}">Home</a></li>
+                            <li class="dropdown" style="font-size: 15px"><a href="{% url 'techmun:index' %}">TechMUN</a>
+                            <!--<li class="dropdown" style="font-size: 15px"><a href="#">TechMUN</a>-->
+                                <ul class = "sub-menu" style = "width: 180px; margin-left:2px">
+                                <!--<li><a href = "#" style = "width: 180px">More Info Coming Soon!</a></li>-->
+                                    <li><a href = "{% url 'techmun:invitation' %}">Invitation</a></li>
+                                    <li><a href = "{% url 'techmun:commtypes' %}">Committees</a></li>
+                                    <li><a href = "{% url 'techmun:schedule' %}">Schedule</a></li>
+                                    <li><a href = "{% url 'techmun:secstaff' %}">Secretariat and Staff</a></li>
+                                <!--<li><a href = "{% url 'techmun:charity' %}">Charity</a></li>
+                                    <li><a href = "{% url 'techmun:registration' %}">Registration</a></li>-->
+                                    <li><a href="{% url 'home:index' %}#covid19">Registration</a></li>
+                                    <li><a href = "{% url 'techmun:cost' %}">Costs and Info</a></li>
+                                    <li><a href = "{% url 'techmun:position' %}">Position Papers</a></li>
+                                </ul>
+                            </li>
+                            <li class = "dropdown" style = "font-size: 15px"><a href="{% url 'techmun:commtypes' %}">Committees</a>
+                                <ul class = "sub-menu" style = "width: 180px; margin-left:2px">
+                                <!-- <li><a href = "#" style = "width: 180px">More Info Coming Soon!</a></li>-->
+                                {% for commtype in highcommtypes %}    
+                                    <li class="dropdown"><a href="#" style="width: 180px">{{ commtype.name }}</a>
+                                        <ul class="sub-menu" style="margin-left: 50px; width: 180px">
+                                            {% for committee in commtype.committees.all %}
+                                            <li><a href="{% url 'techmun:show_committee' committee.url %}" style="width: 180px">{{ committee.name }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    {% endfor %}
+                                    <li class="dropdown"><a href="#" style="width: 180px">Middle School</a>
+                                        <ul class="sub-menu" style="margin-left: 50px; width: 180px">
+                                            {% for commtype in midcommtypes %}
+                                                <li class="dropdown"><a href="#" style="width: 180px">{{ commtype.name }}</a>
+                                                    <ul class="sub-menu" style="margin-left: 50px; width: 180px">
+                                                        {% for committee in commtype.committees.all %}
+                                                        <li><a href="{% url 'techmun:show_committee' committee.url %}" style="width: 180px">{{ committee.name }}</a></li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>   
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class = "dropdown" style = "font-size: 15px"><a href="{% url 'awards:years' %}">Awards</a>
+                                <ul class="sub-menu" style="width: 120px; margin-left:2px">
+                                    {% for year in years %}
+                                    <li class="dropdown"><a href="{% url 'awards:show_year' year.url %}" style="width: 120px">{{ year.name }}</a>
+                                        <ul class="sub-menu" style="margin-left: -5px; width: 150px">
+                                            {% for conference in year.conferences.all %}
+                                                <li><a href="{% url 'awards:show_conf' conference.url %}" style="width: 150px">{{ conference.name }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'home:leadership' %}">Leadership</a></li>
+                            <li><a href="{% url 'home:mun101' %}">MUN 101</a></li>
+                            <li><a href="{% url 'home:calendar' %}">Calendar</a></li>
+                            {% if request.user.is_authenticated %}
+                                <li><a href="{% url 'users:index' %}">Members</a></span></li>
+                            {% else %}
+                                <li><a class="nav-link login-button" href="{% url 'auth:login' %}">Login</a></li>
+                            {% endif %}
+                                </ul>
+                               </li>
+                         </ul>
+                    </div>
+				</div>
+			  </div>
+            </nav>
+			<div class="container">
+				<div class="row">
+					<div class="banner-info">
+						<div class="banner-text text-center">
+							{% block title %}{% endblock %}
+						</div>
+						<div class="overlay-detail text-center">
+			               <a href="#service"><i class="fa fa-angle-down"></i></a>
+			             </div>		
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--/ banner-->
+{% block main %}{% endblock %}
+
+
+	<!--footer-->
+<footer id="footer">
+		<div class="top-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-sm-4 marb20">
+							<div class="ftr-tle">
+								<h4 class="white no-padding">About Us</h4>
+							</div>
+							<div class="info-sec">
+								<p>TJMUN is a club associated with Model United Nations competitions aimed at training and enhancing delegates' performance.</p>
+							</div>
+					</div>
+					<div class="col-md-4 col-sm-4 marb20">
+						<div class="ftr-tle">
+							<h4 class="white no-padding">Quick Links</h4>
+						</div>
+						<div class="info-sec">
+							<ul class="quick-info">
+								<li><a href="{% url 'home:index' %}"><i class="fa fa-circle"></i>Home</a></li>
+								<li><a href="#"><i class="fa fa-circle"></i>TechMUN</a></li>
+								<li><a href="{% url 'home:mun101' %}"><i class="fa fa-circle"></i>MUN 101</a></li>
+								<li><a href="{% url 'home:calendar' %}"><i class="fa fa-circle"></i>Calendar</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4 marb20">
+						<div class="ftr-tle">
+							<h4 class="white no-padding">Follow us</h4>
+						</div>
+						<div class="info-sec">
+							<ul class="social-icon">
+								<li class="bglight-blue"><a style="color: #fff;" href="https://www.facebook.com/tjhsstmun/"><i class="fa fa-facebook"></i></a></li>
+								<li class="bgred"><i class="fa fa-google-plus"></i></li>
+								<li class="bgdark-blue"><i class="fa fa-linkedin"></i></li>
+								<li class="bglight-blue"><i class="fa fa-twitter"></i></li>
+							</ul>
+						</div>
+					</div>
+						<div class="credits" style="padding-top: 125px; padding-left: 795px;">
+                            <!-- 
+                                All the links in the footer should remain intact. 
+                                You can delete the links only if you purchased the pro version.
+                                Licensing information: https://bootstrapmade.com/license/
+                                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Medilab
+                            -->
+                            <p style="color: white">Along with <a href="https://bootstrapmade.com/" style="color: #00c18a">BootstrapMade</a></p>
+                        </div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--/ footer-->
+    
+    <script src="{% static 'jquery.min.js' %}"></script>
+    <script src="{% static 'jquery.easing.min.js' %}"></script>
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+    <script src="{% static 'custom.js' %}"></script>
+    <!--<script src="contactform/contactform.js"></script>
+    -->
+  </body>
+</html>

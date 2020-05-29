@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block background %}
+	{% if conference.image %}
+		{{ conference.image.url }}
+	{% else %}
+		{% static 'img/gavel.jpg' %}
+	{% endif %}
+{% endblock %}
+
+{% block title %}						
+<h1 class="white">{{ conference.name }}</h1>
+{% endblock %}
+
+{% block main %}
+	<!--service-->
+	<section id="service" class="section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 col-sm-9 col-xs-12">
+			       <div style="visibility: visible;" class="col-sm-20 more-features-box">
+                      {% for committee in committees %}
+                        <div class="more-features-box-text">
+							<div class="more-features-box-text-description">
+								<ul class="awards-content">
+								<li><h4>{{ committee.name }}</h4></li>
+									<ul>
+										{% for delegation in committee.delegations.all %}
+										{% if delegation.gavel %}
+										<li><p style = "margin-left: -23px"><i class="fa fa-gavel" style="color: #0099c3;"></i> {{ delegation.name}}</p></li>
+										{% else %}
+										<li><p>{{ delegation.name }}</p></li>
+										{% endif %}
+										
+										{% endfor %}
+									<ul>
+								</ul>
+							</div>
+			          	</div>
+                      {% endfor %}
+                     
+                      {% if conference.delegationaward %}
+                        <div class="more-features-box-text">
+			            <div class="more-features-box-text-description">
+			            	<ul class="awards-content">
+								<li><h4>{{ conference.delegationaward }}</h4></li>
+				            </ul>		
+				        </div>
+                        </div>
+                        {% endif %}
+                        
+                        
+			        </div>
+			    </div>
+			</div>
+		</div>
+	</section>
+	<!--/ service-->
+{% endblock %}

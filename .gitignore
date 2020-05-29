@@ -1,0 +1,14 @@
+*.py[cod]
+__pycache__/
+
+secret.py
+venv
+.venv
+db.sqlite3
+media
+tjmun/serve/img
+tjmun/serve/forms
+tjmun/serve/materials
+tjmun/static/img
+tjmun/static/forms
+tjmun/static/materials

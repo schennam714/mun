@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+<script>
+    $(function() {
+        $("input,textarea,select").on("change paste input", function() {
+            window.onbeforeunload = function() {
+                return 'You have unsaved changes on this page';
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+{% block background %}
+	{% static 'img/gavel.jpg' %}
+{% endblock %}
+
+{% block title %}
+<h1 class="white">Current Dels</h1>
+{% endblock %}
+
+{% block main %}
+  <form action="" method="post">                                                                                             
+      {% for field in del_form %}                                                                                                
+        {{ field }}
+      {% endfor %}                                                                                                           
+      {% csrf_token %}                                                                                                       
+      <input type="submit" value="Save" />
+  </form>     
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block background %}
+	{% if year.image %}
+		{{ year.image.url }}
+	{% else %}
+		{% static 'img/gavel.jpg' %}
+	{% endif %}
+{% endblock %}
+
+{% block title %}
+<h1 class="white">{{ year.name }}</h1>
+{% endblock %}
+
+{% block main %}
+<section class="section-padding">
+    <div class="container">
+        <div class="more-features-box-text-description" style="font-size: 18px; line-height: 30px">
+                <h1 style="text-align: center">TJMUN Awards for {{ year.name }}</h1>
+                {% for conf in conferences %}
+                    <div class="leadership-format">
+                        <h2 style = "text-align: center"><a href = "{% url 'awards:show_conf' conf.url %}"><p style="color: rgb(0, 89, 192);">{{ conf.name }}</p></a></h2>
+                    </div>
+                {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

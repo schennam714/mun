@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block background %}
+	{% static 'img/gavel.jpg' %}
+{% endblock %}
+
+{% block title %}
+<h1 class="white">Techmun</h1>
+{% endblock %}
+
+{% block main %}
+<section id="service" class="section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 col-sm-9 col-xs-12">
+			       <div style="visibility: visible; padding-bottom: 40px;" class="col-sm-20 more-features-box">
+			          
+
+			        <!--<div class="more-features-box-text">
+			            <div class="more-features-box-text-description" style="padding-bottom: 300px;">
+			            	<ul class="awards-content2">
+				            <li><h4 style="font-size: 20px">Committees Coming Soon!</h4></li>
+				            	<ul>
+				            	<ul>
+				            </ul>
+				        </div>
+			          </div>-->
+
+
+			          <div class="more-features-box-text">
+			            <div class="more-features-box-text-description">
+			            	<ul class="awards-content2">
+                                <h1>TECHMUN</h1>
+                                <hr class="botm-line"></hr>
+				            <h3>
+				            	<ul>
+				            		<li><a href="{% url 'techmun:invitation' %}">Invitation</a></li>
+				            		<li><a href="{% url 'techmun:commtypes' %}">Committees</a></li>
+				            		<li><a href="{% url 'techmun:schedule' %}">Schedule</a></li>
+                                    <li><a href="{% url 'techmun:secstaff' %}">Secretariat and Staff</a></li>
+                                    <li><a href="{% url 'techmun:registration' %}">Registration</a></li>
+                                    <li><a href="{% url 'techmun:cost' %}">Costs and Information</a></li>
+                                    <li><a href="{% url 'techmun:position' %}">Position Papers</a></li>
+                                    <!--<li><a href="{% url 'techmun:charity' %}">Charity</a></li>-->
+				            	<ul>
+                                </h3>
+				            </ul>
+				        </div>
+			          </div>
+			          
+
+			        </div>
+			    </div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
