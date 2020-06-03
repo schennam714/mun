@@ -1,8 +1,8 @@
 # Website
 
 The official website for the Thomas Jefferson High School for Science and Technology Model United Nations club.
-Created by Vikram Raghu
-Currently Supervised by Vikram Raghu
+Created by Vikram Raghu.
+Currently Supervised by Vikram Raghu.
 
 ## User Accounts
 * To login, navigate to http://localhost:8000/login/ion or click the login button on this site
