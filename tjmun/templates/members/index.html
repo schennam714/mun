@@ -9,7 +9,7 @@
 {% block title %}
 <h1 class="white">Members</h1>
 <p style="font-size: 26px;">That's a Wrap!</p>
-<p style="font-size: 20px; padding-top: 10px; margin-bottom: 0px;">March 6 - 7, 2020</p>
+<!--<p style="font-size: 20px; padding-top: 10px; margin-bottom: 0px;">March 6 - 7, 2020</p>-->
 <a href="{% url 'users:upload' %}" style="margin-top: 20px;" class="btn btn-appoint">Form Submission</a>
 {% if request.user.is_officer %}
 <a href="{% url 'users:list' %}" style="margin-top: 20px;" class="btn btn-appoint">Check who has to submit forms</a>
