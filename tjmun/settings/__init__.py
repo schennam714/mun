@@ -168,7 +168,7 @@ SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/mun/static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'tjmun/serve')
 
 STATICFILES_DIRS = (
@@ -177,10 +177,9 @@ STATICFILES_DIRS = (
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'tjmun/media')
 
-MEDIA_URL = "/mun/media/"
+MEDIA_URL = "/media/"
 
 USE_X_FORWARDED_HOST = True
-FORCE_SCRIPT_NAME = "/mun"
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 from .secret import *
