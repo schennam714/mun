@@ -36,3 +36,6 @@ As always, see previous examples for reference
 
 * The other pages are basic html, but check the urls.py and views.py in each app to understand the layout
 * refer to the documentation links above for clarification
+
+# Collaboration Interest
+* This website serves members of the TJHSST Community, thus only verified students or alumni should be allowed to contribute. Furthermore, when cloning this repository, a settings/secret.py file must be made. The fields are inconsequential, but if you register an Ion OAuth app, this file should include both SOCIAL_AUTH_ION_KEY and SOCIAL_AUTH_ION_SECRET. Use a pipenv environment to test this project locally. 
